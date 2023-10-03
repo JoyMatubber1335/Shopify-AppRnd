@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "demo-1"
+client_id = "3dc8abc8658a8542a6d3d1bdc80c2a6d"
+application_url = "https://liabilities-berry-noon-separated.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://liabilities-berry-noon-separated.trycloudflare.com/auth/callback",
+  "https://liabilities-berry-noon-separated.trycloudflare.com/auth/shopify/callback",
+  "https://liabilities-berry-noon-separated.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "mystorebs23.myshopify.com"
