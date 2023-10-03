@@ -6,6 +6,8 @@ import {
   Button,
   HorizontalStack,
   HorizontalGrid,
+  VerticalStack,
+  LegacyStack,
 } from "@shopify/polaris";
 
 import { authenticate } from "../shopify.server";
@@ -15,11 +17,10 @@ import { useState } from "react";
 export const loader = async ({ request }) => {
   const id = "8606462607660";
   const { admin, session } = await authenticate.admin(request);
-  const shop = await admin.rest.resources.Product.all({ session: session });
 
-  const singleProduct = await admin.rest.resources.Product.all({
+  const singleProduct = await admin.rest.resources.Product.find({
     session: session,
-    id: 632910392,
+    id: id,
   });
 
   const allProduct = await admin.rest.resources.Product.all({
@@ -28,7 +29,7 @@ export const loader = async ({ request }) => {
 
   return json({
     allProducts: allProduct.data,
-    singleProduct: singleProduct.data,
+    singleProduct: singleProduct,
   });
 };
 
@@ -53,17 +54,33 @@ export default function Index() {
   console.log(loaderData);
   return (
     <Page>
-      <Card>
-        <HorizontalGrid gap="400" columns={3}>
-          <Button primary onClick={clickallProduct}>
-            All Product
-          </Button>
-          <Button primary onClick={clickSingleProduct}>
-            Single Product
-          </Button>
-        </HorizontalGrid>
-      </Card>
-      {all ? data.map((p) => <Card key={p.id}>{p.title}</Card>) : ""}
+      <VerticalStack gap="500">
+        <Card>
+          <HorizontalGrid gap="400" columns={3}>
+            <Button primary onClick={clickallProduct}>
+              All Product
+            </Button>
+            <Button primary onClick={clickSingleProduct}>
+              Single Product
+            </Button>
+          </HorizontalGrid>
+        </Card>
+        {all
+          ? data.map((p) => (
+              <Card key={p.id}>
+                <LegacyStack>
+                  <LegacyStack.Item fill>{p.title} </LegacyStack.Item>
+
+                  <LegacyStack.Item fill>
+                    <Button destructive> delete</Button>
+                  </LegacyStack.Item>
+                </LegacyStack>
+              </Card>
+            ))
+          : ""}
+
+        {single && <Card>{data.title}</Card>}
+      </VerticalStack>
       ok
     </Page>
   );
