@@ -14,24 +14,28 @@ import { authenticate } from "../shopify.server";
 import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 
-export const loader = async ({ request }) => {
-  const id = "8606462607660";
-  const { admin, session } = await authenticate.admin(request);
+// export const loader = async ({ request }) => {
+//   const id = "8606462607660";
+//   const { admin, session } = await authenticate.admin(request);
 
-  const singleProduct = await admin.rest.resources.Product.find({
-    session: session,
-    id: id,
-  });
+//   const singleProduct = await admin.rest.resources.Product.find({
+//     session: session,
+//     id: id,
+//   });
 
-  const allProduct = await admin.rest.resources.Product.all({
-    session: session,
-  });
+//   const allProduct = await admin.rest.resources.Product.all({
+//     session: session,
+//   });
 
-  return json({
-    allProducts: allProduct.data,
-    singleProduct: singleProduct,
-  });
-};
+//   return json({
+//     allProducts: allProduct.data,
+//     singleProduct: singleProduct,
+//   });
+// };
+// export const loader = async ({ request }) => {
+//   const { admin, session } = await authenticate.admin(request);
+
+// };
 
 export default function Index() {
   const [data, setData] = useState(null);
