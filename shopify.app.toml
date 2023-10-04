@@ -2,7 +2,7 @@
 
 name = "demo-1"
 client_id = "3dc8abc8658a8542a6d3d1bdc80c2a6d"
-application_url = "https://delete-uzbekistan-notices-programmes.trycloudflare.com"
+application_url = "https://lg-templates-skiing-maternity.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://delete-uzbekistan-notices-programmes.trycloudflare.com/auth/callback",
-  "https://delete-uzbekistan-notices-programmes.trycloudflare.com/auth/shopify/callback",
-  "https://delete-uzbekistan-notices-programmes.trycloudflare.com/api/auth/callback"
+  "https://lg-templates-skiing-maternity.trycloudflare.com/auth/callback",
+  "https://lg-templates-skiing-maternity.trycloudflare.com/auth/shopify/callback",
+  "https://lg-templates-skiing-maternity.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
